@@ -1,0 +1,29 @@
+# Complex 4 - Many tiny allocations and frees
+# Objective: create numerous tiny holes (stress external fragmentation)
+
+A N1 5
+A N2 5
+A N3 5
+A N4 5
+A N5 5
+A N6 5
+M
+
+# Free alternating ones
+L N2
+L N4
+L N6
+M
+
+# Fill with slightly larger small processes
+A N7 12
+A N8 6
+A N9 4
+M
+
+# Free some and add tiny ones
+L N1
+L N3
+A N10 5
+A N11 3
+M

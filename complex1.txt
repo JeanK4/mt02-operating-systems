@@ -1,0 +1,32 @@
+# Complex 1 - Alternating small allocations and frees (external fragmentation)
+# Objective: produce many small holes interleaved with occupied blocks
+
+A P1 12
+A P2 18
+A P3 7
+A P4 5
+A P5 10
+A P6 15
+M
+
+# Free every other small block to create many holes
+L P2
+L P4
+L P6
+M
+
+# Try to fit new processes into scattered holes
+A P7 9
+A P8 6
+A P9 14
+M
+
+# Free some larger neighbors to create opportunities for consolidation
+L P1
+L P3
+M
+
+# Final allocations to show residual fragmentation
+A P10 40
+A P11 5
+M

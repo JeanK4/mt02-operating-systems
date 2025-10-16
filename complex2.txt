@@ -1,0 +1,27 @@
+# Complex 2 - Alternating large and small allocations, free large
+# Objective: force reuse of big holes vs fragmentation
+
+A A1 40
+A A2 8
+A A3 30
+A A4 4
+A A5 12
+M
+
+# Release large blocks to create big holes
+L A1
+L A3
+M
+
+# Place medium/large processes to test allocation choices
+A B1 35
+A B2 10
+A B3 20
+M
+
+# Free a medium block and try many small allocations
+L B2
+A S1 6
+A S2 5
+A S3 8
+M

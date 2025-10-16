@@ -1,0 +1,25 @@
+# Complex 3 - Internal fragmentation included (reserved vs used)
+# Format: A <proc> <reserved> [<used>]
+# Some allocations reserve more than they use to create internal fragmentation
+
+A X1 20 15
+A X2 25 20
+A X3 10 6
+M
+
+# Free a middle block to create a hole
+L X2
+M
+
+# New allocations with different reserved/used to test packing
+A X4 18 10
+A X5 7 4
+A X6 12 8
+M
+
+# Further fragmentation
+L X1
+L X3
+M
+A X7 30 20
+M

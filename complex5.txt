@@ -1,0 +1,22 @@
+# Complex 5 - Large blocks, frees and internal fragmentation
+# Objective: free a large block and try to reuse; include internal fragmentation
+
+A M1 50 40
+A M2 20 15
+A M3 15 10
+M
+
+# Free the largest block to create a big hole
+L M1
+M
+
+# Try to allocate several medium blocks that compete for the large hole
+A M4 30 25
+A M5 10 6
+A M6 12 8
+M
+
+# Free one medium and try to place a big one
+L M4
+A M7 35 30
+M
